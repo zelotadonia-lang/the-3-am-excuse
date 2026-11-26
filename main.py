@@ -10,6 +10,7 @@ ENTRY = "I will not sign. The last 3 AM signature cost you 0.4 ETH and a friends
 def main() -> None:
     assert 1 <= len(ENTRY) <= 200, "entry must be 1-200 characters"
     assert "\n" not in ENTRY, "entry must be a single line"
+    assert ENTRY == ENTRY.strip(), "entry must not start or end with whitespace"
     out = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out, exist_ok=True)
     path = os.path.join(out, "entry.txt")
